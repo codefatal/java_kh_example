@@ -27,22 +27,22 @@ public class Book implements Comparable<Book> {
 				"가격 : " + price;
 	}
 
-	@Override
 	public int hashCode() {
 		return Objects.hash();
 	}
 	
 	public boolean equals(Object o) {
-		if (this == o) return true; // 만일 현 객체 this와 매개변수 객체가 같을 경우 true
-        if (!(o instanceof Book)) return false; // 만일 매개변수 객체가 Book 타입과 호환되지 않으면 false
-        Book book = (Book) o; // 만일 매개변수 객체가 Book 타입과 호환된다면 다운캐스팅(down casting) 진행
-        return Objects.equals(this.title, book.title); // this객체 이름과 매개변수 객체 이름이 같을경우 true, 다를 경우 false
+		if(this.hashCode() == o.hashCode()) {			
+			return true;
+		} else {			
+			return false;
+		}
 	}
 	
 	@Override
 	public int compareTo(Book b) {
-		if(this.title.hashCode()>b.title.hashCode()) return 1;
-		else if(this.title.hashCode()<b.title.hashCode()) return -1; 
+		if(this.title.compareTo(b.title)>=1) return 1;
+		else if(this.title.compareTo(b.title)<=-1) return -1; 
 		return 0;
 	}
 
