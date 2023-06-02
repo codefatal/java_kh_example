@@ -40,7 +40,7 @@ public class BookController {
 	public Book deleteBook(String title, String author) {
 		Book removeBook = null;
 		for(int i=0; i<bookList.size(); i++) {
-			if(bookList.get(i).getTitle().contains(title) && bookList.get(i).getAuthor().contains(author)) {
+			if(bookList.get(i).getTitle().equals(title) && bookList.get(i).getAuthor().equals(author)) {
 				removeBook = bookList.get(i);
 				bookList.remove(i);
 			}
