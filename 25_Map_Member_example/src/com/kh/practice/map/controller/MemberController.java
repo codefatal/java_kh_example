@@ -22,7 +22,7 @@ public class MemberController {
 	}
 	
 	public String login(String id, String password) {
-		String result = null;
+		String result = "";
 		if(map.containsKey(id)==true && map.get(id).getPassword().equals(password)) {
 			result = map.get(id).getName();
 			return result;

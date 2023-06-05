@@ -87,13 +87,11 @@ public class MemberMenu {
 			String id = sc.next();
 			System.out.print("비밀번호 : ");
 			String password = sc.next();
-			try {				
-				if(!mc.login(id, password).equals(null)) {
-					System.out.println(mc.login(id, password)+"님 환영합니다.");
-					break;
-				}
-			} catch(NullPointerException e) {
+			if(mc.login(id, password).equals(null)) {
 				System.out.println("틀린 아이디 또는 비밀번호 입니다. 다시 입력해주세요.");
+			} else {
+				System.out.println(mc.login(id, password)+"님 환영합니다.");
+				break;
 			}
 		}
 	}
