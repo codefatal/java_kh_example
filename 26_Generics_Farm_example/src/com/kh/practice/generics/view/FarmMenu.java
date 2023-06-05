@@ -50,13 +50,10 @@ public class FarmMenu {
 			
 			if(menuNum==1) {
 				addNewKind();
-				printFarm();
 			} else if(menuNum==2) {
 				removeKind();
-				printFarm();
 			} else if(menuNum==3) {
 				changeAmount();
-				printFarm();
 			} else if(menuNum==4) {
 				printFarm();
 			} else if(menuNum==9) {
@@ -381,6 +378,8 @@ public class FarmMenu {
 	// 2-3. 구입한 농산물 출력용 view 메소드
 	public void printBuyFarm() {
 		Iterator<Farm> its = fc.printBuyFarm().iterator();
-		System.out.println(fc.printBuyFarm());
+		while(its.hasNext()) {
+			System.out.println(its.next());
+		}
 	}
 }

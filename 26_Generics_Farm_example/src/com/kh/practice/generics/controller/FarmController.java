@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.Set;
 
 import com.kh.practice.generics.model.vo.Farm;
-import com.kh.practice.generics.model.vo.Fruit;
-import com.kh.practice.generics.model.vo.Nut;
-import com.kh.practice.generics.model.vo.Vegetable;
 
 public class FarmController {
 	private HashMap<Farm, Integer> hMap = new HashMap<>();
@@ -47,7 +44,7 @@ public class FarmController {
 	public boolean buyFarm(Farm f) {
 		Set<Farm> setFarm = hMap.keySet();
 		for(Farm ff : setFarm) {
-			if(ff.equals(f)) {
+			if(ff.equals(f) && hMap.get(f)!=0) {
 				list.add(f);
 				hMap.put(f, hMap.get(f)-1);
 				return true;
@@ -57,7 +54,15 @@ public class FarmController {
 	}
 	
 	public boolean removeFarm(Farm f) {
-		return true;
+		Set<Farm> setFarm = hMap.keySet();
+		for(Farm ff : setFarm) {
+			if(ff.equals(f)) {
+				list.remove(f);
+				hMap.put(f, hMap.get(f)+1);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public ArrayList<Farm> printBuyFarm() {
