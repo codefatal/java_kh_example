@@ -3,7 +3,7 @@ package com.kh.practice.list.music.model.vo;
 import java.util.Objects;
 
 
-public class Music implements Comparable<Object>  {
+public class Music implements Comparable<Object> {
 	private String title;
 	private String singer;
 	
