@@ -2,7 +2,7 @@ package com.kh.practice.list.library.model.vo;
 
 import java.util.Objects;
 
-public class Book implements Comparable<Book> {
+public class Book implements Comparable<Object> {
 	private String title;
 	private String author;
 	private String category;
@@ -26,11 +26,13 @@ public class Book implements Comparable<Book> {
 				"장르 : " + category + " / " +
 				"가격 : " + price;
 	}
-
+	
+	@Override
 	public int hashCode() {
 		return Objects.hash();
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if(this.hashCode() == o.hashCode()) {			
 			return true;
@@ -40,12 +42,12 @@ public class Book implements Comparable<Book> {
 	}
 	
 	@Override
-	public int compareTo(Book b) {
-		if(this.title.compareTo(b.title)>=1) return 1;
-		else if(this.title.compareTo(b.title)<=-1) return -1; 
+	public int compareTo(Object b) {
+		if(this.title.compareTo(((Book)b).title)>=1) return 1;
+		else if(this.title.compareTo(((Book)b).title)<=-1) return -1; 
 		return 0;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -77,5 +79,6 @@ public class Book implements Comparable<Book> {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 
 }

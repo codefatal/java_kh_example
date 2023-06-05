@@ -6,7 +6,7 @@ import java.util.*;
 import com.kh.practice.list.library.model.vo.Book;
 
 public class BookController {
-	private List<Book> bookList = new ArrayList<>();
+	private List<Book> bookList = new ArrayList<Book>();
 	
 	public BookController() {
 		// 초기 값 4개 추가
