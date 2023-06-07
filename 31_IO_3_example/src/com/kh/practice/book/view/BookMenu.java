@@ -50,7 +50,6 @@ public class BookMenu {
 		cal.set(Calendar.YEAR, Integer.parseInt(dateArr[0]));
 		cal.set(Calendar.MONTH, Integer.parseInt(dateArr[1])-1);
 		cal.set(Calendar.DATE, Integer.parseInt(dateArr[2]));
-		System.out.println(cal.getTime());
 		System.out.print("할인율 : ");
 		double discount = sc.nextDouble();
 		int count = 0;
@@ -67,7 +66,7 @@ public class BookMenu {
 	public void fileRead() {
 		bArr = bc.fileRead();
 		for(int i=0; i<bArr.length; i++) {
-			if(bArr[i]!=null) {				
+			if(bArr[i]!=null) {
 				System.out.println(bArr[i]);
 			}
 		}

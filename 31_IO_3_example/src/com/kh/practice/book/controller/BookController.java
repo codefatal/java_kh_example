@@ -11,13 +11,13 @@ public class BookController {
 	
 	public void makeFile() {
 		String filePath = "book.txt";
-		try {
-			File f = new File(filePath);
-			if(!f.exists()) {
+		File f = new File(filePath);
+		if(!f.exists()) {
+			try {
 				f.createNewFile();
-			} 
-		} catch (IOException e) {
-			e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

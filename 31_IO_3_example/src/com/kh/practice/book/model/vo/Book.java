@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 public class Book implements Serializable {
 	static final long serialVersionUID = 1L;
+	
 	private String title;
 	private String author;
 	private int price;
@@ -24,7 +25,7 @@ public class Book implements Serializable {
 	
 	public String toString() {
 		SimpleDateFormat format = new SimpleDateFormat();
-		format.applyPattern("yyyy년 mm월 dd일");
+		format.applyPattern("yyyy년 MM월 dd일");
 		return "제목 : "+title+" / "+
 				"저자 : "+author+" / "+
 				"가격 : "+price+" / "+
