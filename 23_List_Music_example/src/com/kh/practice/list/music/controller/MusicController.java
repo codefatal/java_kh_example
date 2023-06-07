@@ -67,7 +67,7 @@ public class MusicController {
 	public int ascTitle() {
 		Comparator<Object> cmp = new AscTitle();
 		Collections.sort(list, cmp);
-		if(list.isEmpty()) {			
+		if(list.isEmpty()) {
 			return 0;
 		} else {
 			return 1;
@@ -78,7 +78,7 @@ public class MusicController {
 		Collections.sort(list);
 		if(list.isEmpty()) {
 			return 0;
-		} else {			
+		} else {
 			return 1;
 		}
 	}
