@@ -9,6 +9,7 @@ import com.kh.practice.list.music.model.vo.Music;
 public class MusicController {
 	private List<Music> list = new ArrayList<>();
 	
+	@SuppressWarnings("unchecked")
 	public MusicController() {
 		String filePath = "music.ost";
 		try(
