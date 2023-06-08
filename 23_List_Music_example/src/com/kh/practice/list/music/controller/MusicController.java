@@ -102,6 +102,7 @@ public class MusicController {
 	}
 	
 	public int saveFile(String filePath) {
+		int result = 0;
 		try(
 			FileOutputStream fos = new FileOutputStream(filePath);
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
@@ -109,13 +110,10 @@ public class MusicController {
 			){
 			oos.writeObject(list);
 			oos.flush();
+			result = 1;
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		if(list.size()>0) {			
-			return 1;
-		} else {
-			return -1;
-		}
+		return result;
 	}
 }

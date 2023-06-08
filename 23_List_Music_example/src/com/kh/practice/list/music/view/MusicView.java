@@ -139,7 +139,7 @@ public class MusicView {
 	public void saveFile() {
 		System.out.println("****** 곡정보를 파일에 저장 *******");
 		String filePath = "music.ost";
-		if(mc.saveFile(filePath)>0) {
+		if(mc.saveFile(filePath)>=1) {
 			System.out.println("저장 성공");
 		} else {
 			System.out.println("저장 실패");
