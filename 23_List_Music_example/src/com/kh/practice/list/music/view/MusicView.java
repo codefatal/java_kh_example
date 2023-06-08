@@ -23,31 +23,20 @@ public class MusicView {
 			System.out.println("8. 가수명 내림차순 정렬");
 			System.out.println("9. 종료");
 			System.out.println("0. 리스트 저장");
+			
 			System.out.print("메뉴 번호 선택 : ");
 			int menuNum = sc.nextInt(); sc.nextLine();
-			
-			if(menuNum==1) {
-				addList();
-			} else if(menuNum==2) {
-				addAtZero();
-			} else if(menuNum==3) {
-				printAll();
-			} else if(menuNum==4) {
-				searchMusic();
-			} else if(menuNum==5) {
-				removeMusic();
-			} else if(menuNum==6) {
-				setMusic();
-			} else if(menuNum==7) {
-				ascTitle();
-			} else if(menuNum==8) {
-				descSinger();
-			} else if(menuNum==9) {
-				System.out.println("종료");
-				return;
-			} else if(menuNum==0) {
-				saveFile();
-			}
+			if(menuNum==1) addList();
+			else if(menuNum==2) addAtZero();
+			else if(menuNum==3) printAll();
+			else if(menuNum==4) searchMusic();
+			else if(menuNum==5) removeMusic();
+			else if(menuNum==6) setMusic();
+			else if(menuNum==7) ascTitle();
+			else if(menuNum==8) descSinger();
+			else if(menuNum==9) { System.out.println("종료"); return; }
+			else if(menuNum==0) saveFile();
+			else System.out.println("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요.");
 		}
 	}
 	
@@ -72,8 +61,8 @@ public class MusicView {
 	}
 	
 	public void printAll() {
-		String filePath = "music.ost";
-		List<Music> volist = mc.printAll(filePath);
+		System.out.println("****** 전체 곡 목록 ******");
+		List<Music> volist = mc.printAll();
 		for(Music vo : volist) {
 			System.out.println(vo);
 		}
@@ -143,10 +132,6 @@ public class MusicView {
 			System.out.println("저장 성공");
 		} else {
 			System.out.println("저장 실패");
-		}
-		List<Music> volist = mc.printAll(filePath);
-		for(Music vo : volist) {
-			System.out.println(vo);
 		}
 	}
 	

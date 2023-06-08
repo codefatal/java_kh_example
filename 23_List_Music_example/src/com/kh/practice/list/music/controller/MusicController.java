@@ -9,6 +9,23 @@ import com.kh.practice.list.music.model.vo.Music;
 public class MusicController {
 	private List<Music> list = new ArrayList<>();
 	
+	public MusicController() {
+		String filePath = "music.ost";
+		try(
+				FileInputStream fis = new FileInputStream(filePath);
+				BufferedInputStream bis = new BufferedInputStream(fis);
+				ObjectInputStream ois = new ObjectInputStream(bis);
+				){
+				list = (List<Music>) ois.readObject();
+			} catch(FileNotFoundException e) {
+				e.printStackTrace();
+			} catch(IOException e) {
+				e.printStackTrace();
+			} catch(ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	}
+	
 	public int addList(Music music) {
 		if(music==null) {
 			System.out.println("추가 실패");
@@ -31,25 +48,8 @@ public class MusicController {
 		}
 	}
 	
-//	public List<Music> printAll() {
-//		return list;
-//	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Music> printAll(String filePath) {
-		try(
-			FileInputStream fis = new FileInputStream(filePath);
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			ObjectInputStream ois = new ObjectInputStream(bis);
-			){
-			list = (List<Music>) ois.readObject();
-		} catch(IOException e) {
-			e.printStackTrace();
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+	public List<Music> printAll() {
 		return list;
-		
 	}
 	
 	public Music searchMusic(String title) {
