@@ -1,9 +1,15 @@
 package com.kh.practice.list.music.model.vo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
-public class Music implements Comparable<Object> {
+public class Music implements Comparable<Object>, Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String title;
 	private String singer;
 	

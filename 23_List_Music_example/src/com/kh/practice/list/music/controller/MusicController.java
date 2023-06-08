@@ -1,5 +1,6 @@
 package com.kh.practice.list.music.controller;
 
+import java.io.*;
 import java.util.*;
 
 import com.kh.practice.list.music.model.compare.AscTitle;
@@ -30,8 +31,25 @@ public class MusicController {
 		}
 	}
 	
-	public List<Music> printAll() {
+//	public List<Music> printAll() {
+//		return list;
+//	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Music> printAll(String filePath) {
+		try(
+			FileInputStream fis = new FileInputStream(filePath);
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			ObjectInputStream ois = new ObjectInputStream(bis);
+			){
+			list = (List<Music>) ois.readObject();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		return list;
+		
 	}
 	
 	public Music searchMusic(String title) {
@@ -80,6 +98,24 @@ public class MusicController {
 			return 0;
 		} else {
 			return 1;
+		}
+	}
+	
+	public int saveFile(String filePath) {
+		try(
+			FileOutputStream fos = new FileOutputStream(filePath);
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+			){
+			oos.writeObject(list);
+			oos.flush();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		if(list.size()>0) {			
+			return 1;
+		} else {
+			return -1;
 		}
 	}
 }

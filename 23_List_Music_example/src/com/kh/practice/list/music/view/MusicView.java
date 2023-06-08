@@ -1,5 +1,6 @@
 package com.kh.practice.list.music.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.kh.practice.list.music.controller.MusicController;
@@ -21,6 +22,7 @@ public class MusicView {
 			System.out.println("7. 곡명 오름차순 정렬");
 			System.out.println("8. 가수명 내림차순 정렬");
 			System.out.println("9. 종료");
+			System.out.println("0. 리스트 저장");
 			System.out.print("메뉴 번호 선택 : ");
 			int menuNum = sc.nextInt(); sc.nextLine();
 			
@@ -43,6 +45,8 @@ public class MusicView {
 			} else if(menuNum==9) {
 				System.out.println("종료");
 				return;
+			} else if(menuNum==0) {
+				saveFile();
 			}
 		}
 	}
@@ -68,7 +72,11 @@ public class MusicView {
 	}
 	
 	public void printAll() {
-		System.out.println(mc.printAll());
+		String filePath = "music.ost";
+		List<Music> volist = mc.printAll(filePath);
+		for(Music vo : volist) {
+			System.out.println(vo);
+		}
 	}
 	
 	public void searchMusic() {
@@ -111,6 +119,7 @@ public class MusicView {
 	}
 	
 	public void ascTitle() {
+		System.out.println("****** 곡 명 오름차순 정렬 *******");
 		if(mc.ascTitle()==1) {
 			System.out.println("정렬 성공");
 		} else {
@@ -119,10 +128,25 @@ public class MusicView {
 	}
 	
 	public void descSinger() {
+		System.out.println("****** 가수 명 내림차순 정렬 *******");
 		if(mc.descSinger()==1) {
 			System.out.println("정렬 성공");
 		} else {
 			System.out.println("정렬 실패");
+		}
+	}
+	
+	public void saveFile() {
+		System.out.println("****** 곡정보를 파일에 저장 *******");
+		String filePath = "music.ost";
+		if(mc.saveFile(filePath)>0) {
+			System.out.println("저장 성공");
+		} else {
+			System.out.println("저장 실패");
+		}
+		List<Music> volist = mc.printAll(filePath);
+		for(Music vo : volist) {
+			System.out.println(vo);
 		}
 	}
 	
